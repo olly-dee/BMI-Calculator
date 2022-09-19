@@ -1,58 +1,44 @@
-"use strict"
 
-const height = document.getElementById("height");
-const weight = document.getElementById("weight");
-const calculate = document.querySelector(".calculate");
-const resetButton = document.querySelector(".resetbutton");
-const showResult = document.querySelector(".showResult");
-// const h = height.value;
-// const w = weight.value
-let ans;
+const height_text = document.querySelector(".height_text")
+const weight_text = document.querySelector(".weight_text")
+const height_value = document.querySelector(".height_value")
+const weight_value = document.querySelector(".weight_value")
+const display = document.querySelector(".text_area")
+const showResult = document.querySelector(".showResult")
 
-function result (){
-    ans = (weight.value/(height.value * height.value) * 10000).toFixed(1);
-    if (weight.value === "" || height.value === ""){
-            showResult.innerText = "Be like your papa dey mad, oya enter details";
-            showResult.style.color = "red";
-        }
-      else{
-        if ( ans < 18.5 ){
-            showResult.style.color = "red"
-            showResult.innerText = `Your BMI is ${ans}\nyou're underweight, stop suffering`
-        }
-        else if (ans >= 18.5 && ans <= 24.9){
-            showResult.style.color = "green"
-            showResult.innerText = `Your BMI is ${ans}\nYou're normal, sapa isn't your landlord`
-        }
-        else if (ans >= 25.0 && ans <= 29.9){
-            showResult.style.color = "red"
-            showResult.innerText = `Your BMI is ${ans}\nYou're overweight, you be yahoo boy bros`
-        }
-        else if (ans >= 30.0 && ans <= 34.9){
-            showResult.style.color = "red"
-            showResult.innerText = `Your BMI is ${ans}\nYou're obesed, you be ritualist oga`
-        }
-        else if (ans >= 35.0 && ans <= 39.0){
-            showResult.style.color = "red"
-            showResult.innerText = `Your BMI is ${ans}\nYou're severely obesed, take it easy boss.... Try hit the gym`
-        }
-        else{
-            showResult.style.color = "black"
-            showResult.innerText = `Your BMI is ${ans}\nYou're no longer normal, go on hunger strike`
-        }
-      }
-        // showResult.innerText = ans; 
-        // showResult.style.color = 'green';
-        // console.log(ans)
-        // console.log(height.value, weight.value)
+function bmiCalculator(){
+     const height = parseInt(height_text.value);
+     const weight = parseInt(weight_text.value);
+     let bmi;
+     height_value.textContent = `${height} cm`;
+     weight_value.textContent = `${weight} kg`;
+     
+     bmi = (((weight) / (height ** 2)) * 10000).toFixed(2);
+
+     display.innerHTML = `${bmi} Kgcm<sup>-2</sup>`;
+     if ( bmi < 18.5){
+        showResult.style.color = "red"
+        showResult.innerText = `Your BMI is ${bmi}\nyou,re underweight, try to eat more`
+     }
+     else if ( bmi >= 18.5 && bmi <= 24.9){
+        showResult.style.color = "green"
+        showResult.innerText = `Your BMI is ${bmi}\nyou,re normal, maintain yourself`
+     }
+     else if ( bmi >= 25.0 && bmi <= 29.9){
+        showResult.style.color = "red"
+        showResult.innerText = `Your BMI is ${bmi}\nyou,re overweight, try to exercise more`
+     }
+     else if ( bmi >= 30.0 && bmi <= 34.9){
+        showResult.style.color = "red"
+        showResult.innerText = `Your BMI is ${bmi}\nyou,re obesed, you need to really watch your meals`
+     }
+     else if ( bmi >= 35.0 && bmi <= 39.9){
+        showResult.style.color = "red"
+        showResult.style.animation = "obesed 0.3s alternate-reverse 3"
+        showResult.innerText = `Your BMI is ${bmi}\nyou,re severely obesed, you need consult a doctor`
+     }
+    //  console.log(showResult)
+     
 }
-    
 
-calculate.addEventListener("click", result);99
-
-
-resetButton.addEventListener("click", () =>{
-    weight.value = ""
-    height.value = ""
-    showResult.innerText = ""
-});
+addEventListener("input", bmiCalculator)
