@@ -7,34 +7,27 @@
     <title>Document</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="top">
-            <h4 class="title">BMI CALCULATOR</h4>
+    <div class="main_container">
+        <header>
+            <h3>BMI calculator using range</h3>
+        </header>
+        <div class="height inputContainer">
+            <input class="height_text" type="range" name="" min ="100" max = "250" required id="">
+            <p class="input height_value">100 cm</p>
         </div>
-
-        <div class="first_input">
-            <p>Height:</p>
-            <input class="input" id="height" type="number" required placeholder="enter height">
-            <p>CM</p>
-
+        <div class="weight inputContainer">
+            <input class="weight_text" type="range" name="" min ="20" max = "200" required id="">
+            <p class="input weight_value">20 kg</p>
         </div>
-
-        <div class="second_input">
-            <p>Weight:</p>
-            <input class="input" id="weight" type="number" required placeholder="enter weight">
-            <p>KG</p>
-
-
+       <div class="text">
+        <p class="text_area"></p>
+        <div class="description">
+            <p class="showResult"></p>
         </div>
-    <div class="display">   
-       <div class="button1">
-        <button class="calculate">Calculate</button>
        </div>
-       <p class="showResult"></p>
-       <div class="button2">
-        <button class="resetbutton">Reset</button>
-       </div>
-    </div>
+       <footer>
+        <h6>Application designed by Ola, Copyright &copy; 2022</h6>
+       </footer>
     </div>
     <script src="script.js"></script>
 </body>
